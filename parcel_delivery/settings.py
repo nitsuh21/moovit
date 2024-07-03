@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home'
+    'home',
+    'orders',
+    'dash'
 ]
 
 MIDDLEWARE = [
@@ -70,6 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'parcel_delivery.wsgi.application'
 
+AUTH_USER_MODEL = 'home.User'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
