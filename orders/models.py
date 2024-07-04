@@ -3,7 +3,7 @@ from home.models import User, Driver, Customer
 
 # Create your models here.
 class Order(models.Model):
-    item_name = models.CharField(max_length=100, null=True, blank=True)
+    item_name = models.CharField(max_length=100, null=True, blank=True , default="Parcel-item")
     item_type = models.CharField(max_length=100, default="Parcel")
     orderID = models.CharField(max_length=100)
     height = models.IntegerField(default=0)

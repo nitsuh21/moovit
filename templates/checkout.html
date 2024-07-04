@@ -1,0 +1,171 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MoovIT - Parcel Delivery Company</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'home/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/animate.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'home/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'home/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'home/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/jquery.timepicker.css' %}">
+
+    
+    <link rel="stylesheet" href="{% static 'home/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+  </head>
+  <body>
+    
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">Moov<span style="color: tomato;">IT</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+	          <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+	          <li class="nav-item"><a href="car.html" class="nav-link">Our Car</a></li>
+	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    
+    <div class="hero-wrap col-md-12" >
+      <div class="mt-5">
+        <h2 class="ml-5 mb-2">Complete Order</h2>
+        <div class="card" style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="flex: 1; text-align: center;">
+              <img src="https://i.pinimg.com/originals/ea/5a/22/ea5a22419c4e616765cb28439496ac88.png" alt="Delivery Time" style="max-width: 40px; height: auto;">
+              <p style="margin-top: 10px; font-size: 16px;">Estimated Delivery Time</p>
+              <p style="font-size: 18px; font-weight: bold;" id="estimated-time">-</p>
+            </div>
+            <div style="flex: 1; text-align: center;">
+              <img src="https://cdn.vectorstock.com/i/1000v/24/34/money-icon-vector-21582434.jpg" alt="Price" style="max-width: 40px; height: auto;">
+              <p style="margin-top: 10px; font-size: 16px;">Estimated Price</p>
+              <p style="font-size: 18px; font-weight: bold;" id="estimated-price">-</p>
+            </div>
+          </div>
+        </div>
+        <form action="{% url 'checkout' order.orderID %}" method="post" class="request-form ftco-animate">
+          {% csrf_token %}
+          <div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <h1>{{order}}</h1>
+                  <label for="" class="label">Sender Name <span style="color: red;">*</span></label>
+                  <input type="text" required class="form-control" id="sender_name" name="sender_name" placeholder="Sender Name">
+                </div>
+                <div class="d-flex">
+                  <div class="form-group mr-2">
+                  <label for="" class="label">Sender Email <span style="color: red;">*</span></label>
+                  <input type="email" required class="form-control" id="sender_email" name="sender_email" placeholder="Sender Email">
+                  </div>
+                  <div class="form-group ml-2">
+                  <label for="" class="label">Sender Phone <span style="color: red;">*</span></label>
+                  <input type="phone" required class="form-control" id="sender_phone" name="sender_phone" placeholder="Sender Phone">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="" class="label">Receiver Name <span style="color: red;">*</span></label>
+                  <input type="text" required class="form-control" id="receiver_name" name="receiver_name" placeholder="Receiver Name">
+                </div>
+                <div class="d-flex">
+                <div class="form-group mr-2">
+                <label for="" class="label">Receiver Email </label>
+                <input type="email" class="form-control" id="receiver_email" name="receiver_email" placeholder="Receive Email">
+                </div>
+                <div class="form-group ml-2">
+                <label for="" class="label">Receiver Phone <span style="color: red;">*</span></label>
+                <input type="phone" required class="form-control" id="receiver_phone" name="receiver_phone" placeholder="Receiver Phone">
+                </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="" class="label">Available cards</label>
+                  <div class="card-options" style="display: flex; align-items: center; padding: 1px 0; margin-left: 1;">
+                    <div class="card-option" style="flex: 0 1 auto; text-align: center; margin-right: 5px;">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" class="card-icon" style="max-width: 40px; height: auto;">
+                    </div>
+                    <div class="card-option" style="flex: 0 1 auto; text-align: center; margin-left: 5px;">
+                      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="MasterCard" class="card-icon" style="max-width: 40px; height: auto;">
+                    </div>
+                  </div>
+                </div>                
+                <div class="form-group">
+                  <label for="" class="label">Name on Card <span style="color: red;">*</span></label>
+                  <input type="text" required class="form-control" id="name_on_card" name="name_on_card" placeholder="Name on card">
+                </div>
+                <div class="form-group">
+                  <label for="" class="label">Card Number <span style="color: red;">*</span></label>
+                  <input type="text" required class="form-control" id="card_number" name="card_number" placeholder="Card Number">
+                </div>
+                <div class="d-flex">
+                <div class="form-group mr-2">
+                <label for="" class="label">Expires <span style="color: red;">*</span></label>
+                <input type="date" required class="form-control" id="expires" name="expires" placeholder="Expires At">
+                </div>
+                <div class="form-group ml-2">
+                <label for="" required class="label" >CVC <span style="color: red;">*</span></label>
+                <input type="number" class="form-control" id="cvc" name="cvc" placeholder="CVC">
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+          <input type="submit" value="Complete Order" class="btn btn-primary py-3 px-4">
+          </div>
+
+          </form>
+      </div>
+    </div>
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="{% static 'home/js/jquery.min.js' %}"></script>
+  <script src="{% static 'home/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'home/js/popper.min.js' %}"></script>
+  <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'home/js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'home/js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'home/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'home/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'home/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'home/js/aos.js' %}"></script>
+  <script src="{% static 'home/js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'home/js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'home/js/jquery.timepicker.min.js' %}"></script>
+  <script src="{% static 'home/js/scrollax.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'home/js/google-map.js' %}"></script>
+  <script src="{% static 'home/js/main.js' %}"></script>
+    
+  </body>
+</html>

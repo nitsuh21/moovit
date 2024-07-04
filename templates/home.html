@@ -70,34 +70,35 @@
           </div>
 		  <div class="col-lg-2 col"></div>
           <div class="col-lg-4 col-md-6 mt-0 mt-md-5 d-flex">
-          	<form action="#" class="request-form ftco-animate">
+          	<form action="{% url 'create_order' %}" method="post" class="request-form ftco-animate">
+				{% csrf_token %}
           		<h2>Order Now</h2>
 				<div class="form-group">
 					<label for="" class="label">Pick-up location</label>
-					<input type="text" class="form-control" placeholder="ZipCode, City, Country etc">
+					<input type="text" required class="form-control" id="pickup_address" name="pickup_address" placeholder="ZipCode, City, Country etc">
 				</div>
 				<div class="form-group">
 					<label for="" class="label">Drop-off location</label>
-					<input type="text" class="form-control" placeholder="ZipCode, City, Country etc">
+					<input type="text" required class="form-control" id="delivery_address" name="delivery_address" placeholder="ZipCode, City, Country etc">
 				</div>
 				<div class="d-flex">
 				<div class="form-group mr-2">
 				<label for="" class="label">Weight (lb)</label>
-				<input type="text" class="form-control" id="weight" name="weight" placeholder="Weight">
+				<input type="number" required class="form-control" id="weight" name="weight" placeholder="Weight">
 				</div>
 				<div class="form-group ml-2">
 				<label for="" class="label">Length (in)</label>
-				<input type="text" class="form-control" id="length" name="length" placeholder="Length">
+				<input type="number" required class="form-control" id="length" name="length" placeholder="Length">
 				</div>
 				</div>
 				<div class="d-flex">
 				<div class="form-group mr-2">
 				<label for="" class="label">Width (in)</label>
-				<input type="text" class="form-control" id="width" name="width" placeholder="Width">
+				<input type="number" required class="form-control" id="width" name="width" placeholder="Width">
 				</div>
 				<div class="form-group ml-2">
 				<label for="" class="label">Height (in)</label>
-				<input type="text" class="form-control" id="height" name="height" placeholder="Height">
+				<input type="number" required class="form-control" id="height" name="height" placeholder="Height">
 				</div>
 				</div>
 				<div class="form-group">
