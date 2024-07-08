@@ -28,7 +28,7 @@ def overview(request):
                 created_at__lte=end_of_month
             ).values('sender_email').distinct().count()
             total_drivers = Driver.objects.all().count()
-            active_drivers = Driver.objects.filter(is_active=True).count()
+            active_drivers = Driver.objects.filter(available=True).count()
 
             context = {
                 'total_orders': total_orders,

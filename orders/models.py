@@ -35,8 +35,8 @@ class Order(models.Model):
 
     driver_assigned = models.ForeignKey(Driver, on_delete=models.SET_NULL, null=True, blank=True)
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     
     def __str__(self):
         return self.item_name

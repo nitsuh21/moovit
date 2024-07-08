@@ -50,6 +50,7 @@ class Customer(models.Model):
     
 class Driver(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    available = models.BooleanField(default=True, null=True, blank=True)
     phone = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     vehicle = models.CharField(max_length=100)
