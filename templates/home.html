@@ -43,9 +43,9 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	          <li class="nav-item"><a href="{% url 'aboutus' %}" class="nav-link">About</a></li>
+	          <li class="nav-item"><a href="{% url 'pricing' %}" class="nav-link">Pricing</a></li>
+	          <li class="nav-item"><a href="{% url 'contactus' %}" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -220,7 +220,7 @@
     	</div>
     </section>
 
-    <section class="ftco-section testimony-section">
+    <section class="ftco-section testimony-section pb-1">
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center heading-section ftco-animate">
@@ -233,7 +233,7 @@
             <div class="carousel-testimony owl-carousel ftco-owl">
               <div class="item">
                 <div class="testimony-wrap text-center py-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(assets/dashboard/images/person_1.jpg)">
+                  <div class="user-img mb-4" style="background-image: url('static/home/images/person_1.jpg')">
                   </div>
                   <div class="text pt-4">
                     <p class="mb-4">Their Service is amazing, They Delivered our Flyers in several locations, and helped us acheive our marketing campaigns, Thankyou</p>
@@ -244,7 +244,7 @@
               </div>
               <div class="item">
                 <div class="testimony-wrap text-center py-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(assets/images/person_2.jpg)">
+                  <div class="user-img mb-4" style="background-image: url(static/home/images/person_2.jpg)">
                   </div>
                   <div class="text pt-4">
                     <p class="mb-4">Kept their promise, was the one, who they claimed. We highly recommend their services</p>
@@ -255,7 +255,7 @@
               </div>
               <div class="item">
                 <div class="testimony-wrap text-center py-4 pb-5">
-                  <div class="user-img mb-4" style="background-image: url(static/assets/images/person_3.jpg)">
+                  <div class="user-img mb-4" style="background-image: url(static/home/images/person_3.jpg)">
                   </div>
                   <div class="text pt-4">
                     <p class="mb-4">We got our deliverables well and safe, I can't thank them enough for their 24/7 support and updates. Thank you.</p>
@@ -270,18 +270,18 @@
       </div>
     </section>
 
-		<section class="ftco-section ftco-no-pt ftco-no-pb">
+		<section class="ftco-section ftco-no-pt ftco-no-pb pb-4 pt-3">
 			<div class="container">
 				<div class="row no-gutters">
-					<div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/about.jpg);">
+					<div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url('static/home/images/moovit-about.jpeg');">
 					</div>
 					<div class="col-md-6 wrap-about py-md-5 ftco-animate">
 	          <div class="heading-section mb-5 pl-md-5">
 	          	<span class="subheading">About us</span>
 	            <h2 class="mb-4">Your Delivery Ally</h2>
 
-	            <p>we build our Reputations upon your satisfaction.</p>
-	            <p>MoovIT, is a delivery and logistics company, know for being strong delivery ally for SMEs, big companies, and Individuals. with the proven track of records, you can entrust us with parcel, Ducuments, Heavy Materials, and Medical Equipments Delivery.<p>
+	            <p>we build our Reputation upon your satisfaction.</p>
+	            <p>MoovIT, is a delivery and logistics company, know for being strong delivery ally for SMEs, big companies, and Individuals. with the proven track of records, you can entrust us with parcel, Documents, Heavy Materials, and Medical Equipments Delivery.<p>
 	            <p><a href="/" class="btn btn-primary">Order Us Now</a></p>
 	          </div>
 					</div>
@@ -296,6 +296,7 @@
             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">About MoovIT</h2>
               <p>Your guaranteed ally for transportation</p>
+              <img src="{% static 'home/images/moov-it-logo.jpg' %}" style="width: 100px;" alt="logo">
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>

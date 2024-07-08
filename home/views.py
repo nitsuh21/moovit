@@ -10,6 +10,12 @@ def home(request):
 def contactus(request):
     return render(request, 'contact-us.html')
 
+def aboutus(request):
+    return render(request, 'about-us.html')
+
+def pricing(request):
+    return render(request, 'pricing.html')
+
 def signin(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -34,7 +40,6 @@ def signin(request):
     else:
         return render(request, 'signin.html')
     
-
 def signout(request):
     logout(request)
     return redirect('signin')
