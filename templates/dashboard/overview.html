@@ -99,14 +99,14 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Orders</p>
                     <h5 class="font-weight-bolder">
-                      62
+                      {{total_orders}}
                     </h5>
                     <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">50</span>
+                      <span class="text-success text-sm font-weight-bolder">{{total_complete_orders}}</span>
                       completed
                     </p>
                     <p class="mb-0">
-                      <span class="text-warning text-sm font-weight-bolder">12</span>
+                      <span class="text-warning text-sm font-weight-bolder">{{total_incomplete_orders}}</span>
                       incomplete
                     </p>
                   </div>
@@ -128,14 +128,14 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Transactions</p>
                     <h5 class="font-weight-bolder">
-                      +3,462
+                    +{{total_transactions_value}}
                     </h5>
                     <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">50</span>
+                      <span class="text-success text-sm font-weight-bolder">{{total_transactions_count}}</span>
                       completed 
                     </p>
                     <p class="mb-0">
-                      <span class="text-warning text-sm font-weight-bolder">10</span>
+                      <span class="text-warning text-sm font-weight-bolder">{{total_pending_transactions}}</span>
                       pending 
                     </p>
                   </div>
@@ -157,11 +157,11 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Customers</p>
                     <h5 class="font-weight-bolder">
-                      285
+                      {{total_customers}}
                     </h5>
                     <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+50</span>
-                      since last quarter
+                      <span class="text-success text-sm font-weight-bolder">+{{new_customers_count}}</span>
+                      Since last quarter
                     </p>
                   </div>
                 </div>
@@ -182,10 +182,10 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Drivers</p>
                     <h5 class="font-weight-bolder">
-                      18
+                      {{total_drivers}}
                     </h5>
                     <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">15</span> Current Active Drivers
+                      <span class="text-success text-sm font-weight-bolder">{{active_drivers}}</span> Current Active Drivers
                     </p>
                   </div>
                 </div>
@@ -199,70 +199,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="row mt-4">
-        <div class="col-lg-7 mb-lg-0 mb-4">
-          <div class="card z-index-2 h-100">
-            <div class="card-header pb-0 pt-3 bg-transparent">
-              <h6 class="text-capitalize">Sales overview</h6>
-              <p class="text-sm mb-0">
-                <i class="fa fa-arrow-up text-success"></i>
-                <span class="font-weight-bold">4% more</span> in 2024
-              </p>
-            </div>
-            <div class="card-body p-3">
-              <div class="chart">
-                <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-5">
-          <div class="card card-carousel overflow-hidden h-100 p-0">
-            <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
-              <div class="carousel-inner border-radius-lg h-100">
-                <div class="carousel-item h-100 active" style="background-image: url('img/carousel-1.jpg');
-      background-size: cover;">
-                  <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                    <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                      <i class="ni ni-camera-compact text-dark opacity-10"></i>
-                    </div>
-                    <h5 class="text-white mb-1">Get started with Argon</h5>
-                    <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
-                  </div>
-                </div>
-                <div class="carousel-item h-100" style="background-image: url('img/carousel-2.jpg');
-      background-size: cover;">
-                  <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                    <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                      <i class="ni ni-bulb-61 text-dark opacity-10"></i>
-                    </div>
-                    <h5 class="text-white mb-1">Faster way to create web pages</h5>
-                    <p>That’s my skill. I’m not really specifically talented at anything except for the ability to learn.</p>
-                  </div>
-                </div>
-                <div class="carousel-item h-100" style="background-image: url('static/dashboard/img/carousel-3.jpg');
-      background-size: cover;">
-                  <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                    <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                      <i class="ni ni-trophy text-dark opacity-10"></i>
-                    </div>
-                    <h5 class="text-white mb-1">Share with us your design tips!</h5>
-                    <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
-                  </div>
-                </div>
-              </div>
-              <button class="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div> -->
       <div class="row mt-4">
         <div class="col-lg-7 mb-lg-0 mb-4">
           <div class="card ">
@@ -282,146 +218,32 @@
                   </tr>
                 </thead>
                 <tbody>
+                  {% for order in recent_orders %}
                   <tr>
                     <td>
-                      <p class="text-xs font-weight-bold mb-0">0000019</p>
+                      <p class="text-xs font-weight-bold mb-0">{{order.orderID}}</p>
                     </td>
                     <td>
-                      <p class="text-xs font-weight-bold mb-0">500</p>
+                      <p class="text-xs font-weight-bold mb-0">{{order.price}}</p>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">23/04/24</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{order.created_at}}</span>
                     </td>
+                    {% if order.order_status == 'Delivered' %}
                     <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Delivered</span>
+                      <span class="badge badge-sm bg-gradient-success">{{order.order_status}}</span>
                     </td>
+                    {% elif order.order_status == 'Cancelled' %}
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-danger">{{order.order_status}}</span>
+                    </td>
+                    {% else %}
+                    <td class="align-middle text-center text-sm">
+                      <span class="badge badge-sm bg-gradient-warning">{{order.order_status}}</span>
+                    </td>
+                    {% endif %}
                   </tr>
-                  <tr>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">0000018</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">600</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">24/04/24</span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-warning">Pending</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">0000017</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">700</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">25/04/24</span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-danger">Cancelled</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">0000016</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">800</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">26/04/24</span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Delivered</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">0000015</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">900</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">27/04/24</span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Delivered</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">0000014</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">1200</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">28/04/24</span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Delivered</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">0000013</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">1500</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">29/04/24</span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Delivered</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">0000012</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">1800</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">30/04/24</span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Delivered</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">0000011</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">2000</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">01/05/24</span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Delivered</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">0000010</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">2200</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">02/05/24</span>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">Delivered</span>
-                    </td>
-                  </tr>                  
+                  {% endfor %}                 
                 </tbody>
               </table>
             </div>
@@ -450,84 +272,33 @@
               <table class="table align-items-center mb-0">
                 <thead>
                   <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Driver ID</th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Number of Deliveries</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">First Name</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Last Name</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Vehicle Number</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Level</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Points</th>
                   </tr>
                 </thead>
                 <tbody>
+                  {% for driver in top_drivers %}
                   <tr>
                     <td>
-                      <p class="text-xs font-weight-bold mb-0">000003</p>
+                      <p class="text-xs font-weight-bold mb-0">{{driver.user.first_name}}</p>
                     </td>
                     <td>
-                      <p class="text-xs font-weight-bold mb-0">Jason Maynor</p>
+                      <p class="text-xs font-weight-bold mb-0">{{driver.user.last_name}}</p>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">10</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{driver.vehicle_number}}</span>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">Level 1</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">000004</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Samantha Lee</p>
+                      <span class="text-secondary text-xs font-weight-bold">{{driver.level}}</span>
                     </td>
                     <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">15</span>
+                      <span class="text-secondary text-xs font-weight-bold">{{driver.points}}</span>
                     </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">Level 2</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">000005</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Michael Brown</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">20</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">Level 3</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">000006</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Emily Davis</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">12</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">Level 2</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">000007</p>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">David Wilson</p>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">18</span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">Level 3</span>
-                    </td>
-                  </tr>
-                  </tr>                  
+                  </tr> 
+                  {% endfor %}                
                 </tbody>
               </table>
             </div>
@@ -616,89 +387,6 @@
   <script src="{% static 'dashboard/js/plugins/smooth-scrollbar.min.js' %}"></script>
   <script src="{% static 'dashboard/js/plugins/chartjs.min.js' %}"></script>
   <script>
-    var ctx1 = document.getElementById("chart-line").getContext("2d");
-
-    var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
-
-    gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
-    gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
-    gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
-    new Chart(ctx1, {
-      type: "line",
-      data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-          label: "Mobile apps",
-          tension: 0.4,
-          borderWidth: 0,
-          pointRadius: 0,
-          borderColor: "#5e72e4",
-          backgroundColor: gradientStroke1,
-          borderWidth: 3,
-          fill: true,
-          data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-          maxBarThickness: 6
-
-        }],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          }
-        },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5]
-            },
-            ticks: {
-              display: true,
-              padding: 10,
-              color: '#fbfbfb',
-              font: {
-                size: 11,
-                family: "Open Sans",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false,
-              borderDash: [5, 5]
-            },
-            ticks: {
-              display: true,
-              color: '#ccc',
-              padding: 20,
-              font: {
-                size: 11,
-                family: "Open Sans",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-        },
-      },
-    });
-  </script>
-  <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
       var options = {
@@ -710,8 +398,13 @@
 
   <!--pie chart-->
   <script>
-    var xValues = ["delivered", "pending", "cancelled",]
-    var yValues = [30, 13, 12];
+    const total_complete_orders = `{{total_complete_orders}}`
+    const total_incomplete_orders = `{{total_incomplete_orders}}`
+    const total_cancelled_orders = `{{total_cancelled_orders}}`;
+
+    console.log(total_complete_orders, total_incomplete_orders, total_cancelled_orders)
+    var xValues = ["delivered", "incomplete", "cancelled",]
+    var yValues = [total_complete_orders, total_incomplete_orders, total_cancelled_orders];
     var barColors = [
       "#4CB140",
       "#F4C145",

@@ -101,163 +101,38 @@
                   <table class="table align-items-center mb-0">
                     <thead>
                       <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Full Name</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Vehicle Number</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Total Delivered</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Points</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Phone Number</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Level</th>
                         <th class="text-secondary opacity-7"></th>
                       </tr>
                     </thead>
                     <tbody>
+                        {% for driver in drivers%}
                         <tr>
                             <td>
                               <div class="d-flex px-2 py-1">
                                 <div class="d-flex flex-column justify-content-center">
-                                  <h6 class="mb-0 text-sm">John Micheal</h6>
+                                  <h6 class="mb-0 text-sm">{{driver.user.first_name}} {{driver.user.last_name}}</h6>
                                 </div>
                               </div>
                             </td>
                             <td>
-                              <p class="text-xs font-weight-bold mb-0">KAC 123</p>
+                              <p class="text-xs font-weight-bold mb-0">{{driver.vehicle_number}}</p>
                             </td>
                             <td>
-                              <p class="text-xs font-weight-bold mb-0">15</p>
+                              <p class="text-xs font-weight-bold mb-0">{{driver.points}}</p>
                             </td>
                             <td class="align-middle text-center">
-                              <span class="text-secondary text-xs font-weight-bold">+1901830410</span>
+                              <span class="text-secondary text-xs font-weight-bold">{{driver.phone}}</span>
                             </td>
                             <td class="align-middle text-center text-sm">
-                              <span class="badge badge-sm bg-gradient-success">1</span>
+                              <span class="badge badge-sm bg-gradient-success">{{driver.level}}</span>
                             </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="d-flex px-2 py-1">
-                                <div class="d-flex flex-column justify-content-center">
-                                  <h6 class="mb-0 text-sm">Jane Smith</h6>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <p class="text-xs font-weight-bold mb-0">ABC 456</p>
-                            </td>
-                            <td>
-                              <p class="text-xs font-weight-bold mb-0">12</p>
-                            </td>
-                            <td class="align-middle text-center">
-                              <span class="text-secondary text-xs font-weight-bold">+1901830411</span>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                              <span class="badge badge-sm bg-gradient-success">1</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="d-flex px-2 py-1">
-                                <div class="d-flex flex-column justify-content-center">
-                                  <h6 class="mb-0 text-sm">Mike Johnson</h6>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <p class="text-xs font-weight-bold mb-0">XYZ 789</p>
-                            </td>
-                            <td>
-                              <p class="text-xs font-weight-bold mb-0">10</p>
-                            </td>
-                            <td class="align-middle text-center">
-                              <span class="text-secondary text-xs font-weight-bold">+1901830412</span>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                              <span class="badge badge-sm bg-gradient-success">1</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="d-flex px-2 py-1">
-                                <div class="d-flex flex-column justify-content-center">
-                                  <h6 class="mb-0 text-sm">Bob White</h6>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <p class="text-xs font-weight-bold mb-0">MNO 901</p>
-                            </td>
-                            <td>
-                              <p class="text-xs font-weight-bold mb-0">13</p>
-                            </td>
-                            <td class="align-middle text-center">
-                              <span class="text-secondary text-xs font-weight-bold">+1901830416</span>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                              <span class="badge badge-sm bg-gradient-success">1</span>
-                            </td>
-                          </tr>  
-                          <tr>
-                            <td>
-                              <div class="d-flex px-2 py-1">
-                                <div class="d-flex flex-column justify-content-center">
-                                  <h6 class="mb-0 text-sm">Emily Davis</h6>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <p class="text-xs font-weight-bold mb-0">DEF 012</p>
-                            </td>
-                            <td>
-                              <p class="text-xs font-weight-bold mb-0">4</p>
-                            </td>
-                            <td class="align-middle text-center">
-                              <span class="text-secondary text-xs font-weight-bold">+1901830413</span>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                              <span class="badge badge-sm bg-gradient-warning">2</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="d-flex px-2 py-1">
-                                <div class="d-flex flex-column justify-content-center">
-                                  <h6 class="mb-0 text-sm">David Brown</h6>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <p class="text-xs font-weight-bold mb-0">GHI 345</p>
-                            </td>
-                            <td>
-                              <p class="text-xs font-weight-bold mb-0">3</p>
-                            </td>
-                            <td class="align-middle text-center">
-                              <span class="text-secondary text-xs font-weight-bold">+1901830414</span>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                              <span class="badge badge-sm bg-gradient-warning">2</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="d-flex px-2 py-1">
-                                <div class="d-flex flex-column justify-content-center">
-                                  <h6 class="mb-0 text-sm">Alice Green</h6>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                              <p class="text-xs font-weight-bold mb-0">JKL 678</p>
-                            </td>
-                            <td>
-                              <p class="text-xs font-weight-bold mb-0">1</p>
-                            </td>
-                            <td class="align-middle text-center">
-                              <span class="text-secondary text-xs font-weight-bold">+1901830415</span>
-                            </td>
-                            <td class="align-middle text-center text-sm">
-                              <span class="badge badge-sm bg-gradient-warning">3</span>
-                            </td>
-                          </tr>
-                                                  
+                        </tr>   
+                        {% endfor %}                  
                     </tbody>
                   </table>
                 </div>

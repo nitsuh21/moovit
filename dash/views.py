@@ -15,12 +15,13 @@ def overview(request):
     else:
         if request.user.is_authenticated:
             total_orders = Order.objects.all().count()
-            total_complete_orders = Order.objects.filter(order_status='delivered').count()
-            total_intiated_orders = Order.objects.filter(order_status='Intiated').count()
-            total_pending_orders = Order.objects.filter(order_status='pending').count()
+            total_complete_orders = Order.objects.filter(order_status='Delivered').count()
+            total_intiated_orders = Order.objects.filter(order_status='Initiated').count()
+            total_pending_orders = Order.objects.filter(order_status='Pending').count()
+            total_cancelled_orders = Order.objects.filter(order_status='Cancelled').count()
             total_incomplete_orders = total_intiated_orders + total_pending_orders
-            total_transactions_count = Order.objects.filter(payment_status='paid').count()
-            total_transactions_value = Order.objects.filter(payment_status='paid').aggregate(Sum('price'))
+            total_transactions_count = Order.objects.filter(payment_status='Paid').count()
+            total_transactions_value = Order.objects.filter(payment_status='Paid').aggregate(Sum('price'))['price__sum']
             total_pending_transactions = Order.objects.filter(payment_status='pending').count()
             total_customers = Order.objects.values('sender_email').distinct().count()
             new_customers_count = Order.objects.filter(
@@ -30,11 +31,18 @@ def overview(request):
             total_drivers = Driver.objects.all().count()
             active_drivers = Driver.objects.filter(available=True).count()
 
+            #recent orders
+            recent_orders = Order.objects.all().order_by('-id')[:10]
+
+            #top drivers
+            top_drivers = Driver.objects.all().order_by('-points')[:5]
+
             context = {
                 'total_orders': total_orders,
                 'total_complete_orders': total_complete_orders,
                 'total_intiated_orders': total_intiated_orders,
                 'total_pending_orders': total_pending_orders,
+                'total_cancelled_orders': total_cancelled_orders,
                 'total_incomplete_orders': total_incomplete_orders,
                 'total_transactions_count': total_transactions_count,
                 'total_transactions_value': total_transactions_value,
@@ -42,7 +50,9 @@ def overview(request):
                 'total_customers': total_customers,
                 'new_customers_count': new_customers_count,
                 'total_drivers': total_drivers,
-                'active_drivers': active_drivers
+                'active_drivers': active_drivers,
+                'recent_orders': recent_orders,
+                'top_drivers': top_drivers
             }
 
             return render(request, 'dashboard/overview.html', context)
@@ -128,11 +138,16 @@ def order_details(request, orderID):
             'order': order
         }
         return render(request, 'dashboard/order_details.html', context)
+
 def drivers(request):
     if request.method == 'POST':
         print(request.POST)
     else:
-        return render(request, 'dashboard/drivers.html')
+        drivers = Driver.objects.all().order_by('-user_id')
+        context = {
+            'drivers': drivers
+        }
+        return render(request, 'dashboard/drivers.html', context)
 
 def profile_details(request, id):
     if request.method == 'POST':

@@ -46,15 +46,17 @@ class Customer(models.Model):
     address = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.user.username
+        return self.user.email
     
 class Driver(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     available = models.BooleanField(default=True, null=True, blank=True)
+    level = models.CharField(max_length=100, default="3")
+    points = models.IntegerField(default=0)
     phone = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     vehicle = models.CharField(max_length=100)
     vehicle_number = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.user.username
+        return self.user.email
