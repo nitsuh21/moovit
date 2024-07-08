@@ -5,7 +5,9 @@ import string
 import datetime
 from django.contrib import messages
 from django.core.mail import send_mail
+from geopy.geocoders import Nominatim
 
+loc = Nominatim(user_agent="GetLoc")
 
 def get_pickup_address():
     return "Pickup Address"
@@ -39,8 +41,6 @@ def create_order(request):
         except Exception as e:
             messages.error(request, 'Error creating order')
             return redirect('home')
-
-        return redirect('home')
     else:
         return render(request, 'create.html')
 
@@ -92,9 +92,15 @@ def checkout_order(request, orderid):
     else:
         try:
             order = Order.objects.get(orderID=orderid)
+            pickup_loc = loc.geocode(order.pickup_address)
+            delivery_loc = loc.geocode(order.delivery_address)
+
+            print(pickup_loc, delivery_loc)
         except Order.DoesNotExist:
             return redirect('home')
+        
         context = {
             "order": order
         }
         return render(request, 'checkout.html', context)
+    

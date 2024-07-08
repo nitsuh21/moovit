@@ -107,249 +107,50 @@
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Paid Amount</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Delivery Status</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Driver Assigned</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
+                      {% for order in orders %}
                       <tr>
                         <td>
                           <div class="d-flex px-2 py-1">
                             <div class="d-flex flex-column justify-content-center">
-                              <h6 class="mb-0 text-sm">0000012</h6>
+                              <h6 class="mb-0 text-sm">{{order.orderID}}</h6>
                             </div>
                           </div>
                         </td>
                         <td>
-                          <p class="text-xs font-weight-bold mb-0">st.mary street</p>
+                          <p class="text-xs font-weight-bold mb-0">{{ order.pickup_address}}</p>
                         </td>
                         <td>
-                          <p class="text-xs font-weight-bold mb-0">rwanda street</p>
+                          <p class="text-xs font-weight-bold mb-0">{{ order.delivery_address}}</p>
                         </td>
                         <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">400</span>
+                          <span class="text-secondary text-xs font-weight-bold">{{order.price}}</span>
                         </td>
+                        {% if order.order_status == 'delivered' %}
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success">Delivered</span>
+                          <span class="badge badge-sm bg-gradient-success">{{order.order_status}}</span>
                         </td>
-                        <td class="align-middle text-center">
-                          <p class="text-xs font-weight-bold mb-0">John Daniel</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                              <h6 class="mb-0 text-sm">0000011</h6>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">lakeview avenue</p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">highland road</p>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">350</span>
-                        </td>
+                        {% elif order.order_status == 'cancelled' %}
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success">Delivered</span>
+                          <span class="badge badge-sm bg-gradient-danger">{{order.order_status}}</span>
                         </td>
-                        <td class="align-middle text-center">
-                          <p class="text-xs font-weight-bold mb-0">Emma Smith</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                              <h6 class="mb-0 text-sm">0000010</h6>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">park lane</p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">elm street</p>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">500</span>
-                        </td>
+                        {% else %}
                         <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-warning">Pending</span>
+                          <span class="badge badge-sm bg-gradient-warning">{{order.order_status}}</span>
                         </td>
+                        {% endif %}
                         <td class="align-middle text-center">
-                          <p class="text-xs font-weight-bold mb-0">Olivia Johnson</p>
+                          <p class="text-xs font-weight-bold mb-0">{{order.driver_assigned}}</p>
                         </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                              <h6 class="mb-0 text-sm">0000009</h6>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">main street</p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">maple avenue</p>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">420</span>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success">Delivered</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <p class="text-xs font-weight-bold mb-0">Liam Brown</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                              <h6 class="mb-0 text-sm">0000008</h6>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">oak street</p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">pine avenue</p>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">380</span>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-danger">Cancelled</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <p class="text-xs font-weight-bold mb-0">Noah Davis</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                              <h6 class="mb-0 text-sm">0000007</h6>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">birch street</p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">cedar avenue</p>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">410</span>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success">Delivered</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <p class="text-xs font-weight-bold mb-0">Mason Wilson</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                              <h6 class="mb-0 text-sm">0000006</h6>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">willow street</p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">ash avenue</p>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">390</span>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-warning">Pending</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <p class="text-xs font-weight-bold mb-0">Sophia Martinez</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                              <h6 class="mb-0 text-sm">0000005</h6>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">sycamore street</p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">spruce avenue</p>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">370</span>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success">Delivered</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <p class="text-xs font-weight-bold mb-0">Isabella Anderson</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                              <h6 class="mb-0 text-sm">0000004</h6>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">maple street</p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">fir avenue</p>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">360</span>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success">Delivered</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <p class="text-xs font-weight-bold mb-0">James Thomas</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div class="d-flex flex-column justify-content-center">
-                              <h6 class="mb-0 text-sm">0000003</h6>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">elm street</p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">oak avenue</p>
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold">450</span>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          <span class="badge badge-sm bg-gradient-success">Delivered</span>
-                        </td>
-                        <td class="align-middle text-center">
-                          <p class="text-xs font-weight-bold mb-0">Lucas Jackson</p>
-                        </td>
-                      </tr>                      
+                        <td class="align-middle">
+                          <a href="{% url 'order_details' order.orderID %}" class="text-secondary font-weight-bold text-xs">
+                            <span class="badge bg-gradient-info">View</span>
+                          </a>
+                      </tr>    
+                      {% endfor %}                 
                     </tbody>
                   </table>
                 </div>

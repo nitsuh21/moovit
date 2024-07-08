@@ -21,6 +21,7 @@ class Order(models.Model):
     payment_status = models.CharField(max_length=100, default="Pending")
     order_status = models.CharField(max_length=100, default="Initiated")
     complain_status = models.CharField(max_length=100, default="No")
+    price = models.IntegerField(default=0)
 
     #contact information
     sender_name = models.CharField(max_length=100, blank=True, null=True)
@@ -33,6 +34,9 @@ class Order(models.Model):
     description = models.TextField(default="No description provided")
 
     driver_assigned = models.ForeignKey(Driver, on_delete=models.SET_NULL, null=True, blank=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.item_name
