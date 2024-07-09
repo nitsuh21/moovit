@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from orders.models import Order
-from home.models import Driver
+from home.models import Driver, User
 from django.db.models import Sum
 from django.utils import timezone
 from datetime import timedelta
@@ -79,7 +79,7 @@ def order_details(request, orderID):
         length = request.POST.get('length')
         weight = request.POST.get('weight')
         quantity = request.POST.get('quantity')
-        order_date = request.POST.get('order_date')
+        #order_date = request.POST.get('order_date')
         pickup_address = request.POST.get('pickup_address')
         delivery_address = request.POST.get('delivery_address')
         pickup_date = request.POST.get('pickup_date')
@@ -97,8 +97,10 @@ def order_details(request, orderID):
         receiver_phone = request.POST.get('receiver_phone')
         description = request.POST.get('description')
         driver_assigned = request.POST.get('driver_assigned')
+        print("dr_ssigned", driver_assigned)
+        driver_user = User.objects.filter(email=driver_assigned)
+        driver_assigned = Driver.objects.get(user__in=driver_user)
 
-        print(orderID, item_name, item_type, height, width, length, weight, quantity, order_date, pickup_address, delivery_address, pickup_date, delivery_date, pickup_time, payment_status, order_status, complain_status, price, sender_name, sender_email, sender_phone, receiver_name, receiver_email, receiver_phone, description, driver_assigned)
         try:
             order = Order.objects.get(orderID=orderID)
         except Exception as e:
@@ -111,7 +113,7 @@ def order_details(request, orderID):
         order.length = length
         order.weight = weight
         order.quantity = quantity
-        order.order_date = order_date
+        #order.order_date = order_date
         order.pickup_address = pickup_address
         order.delivery_address = delivery_address
         order.pickup_date = pickup_date
@@ -131,11 +133,14 @@ def order_details(request, orderID):
         order.driver_assigned = driver_assigned
         order.save()
 
-        return redirect('order_details', orderID)
+        return redirect('orders')
     else:
         order = Order.objects.get(orderID=orderID)
+        drivers = Driver.objects.filter(available=True)
+        print("drivers", drivers)
         context = {
-            'order': order
+            'order': order,
+            'drivers': drivers
         }
         return render(request, 'dashboard/order_details.html', context)
 
@@ -154,3 +159,9 @@ def profile_details(request, id):
         print(request.POST)
     else:
         return render(request, 'dashboard/profile_details.html')
+    
+def myprofile(request):
+    if request.method == 'POST':
+        print(request.POST)
+    else:
+        return render(request, 'dashboard/myprofile.html')

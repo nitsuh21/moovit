@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>MoovIT - Parcel Delivery Company</title>
+    <title>GLS France - Parcel Delivery Company</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -35,7 +35,7 @@
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="">Moov<span>IT</span></a>
+	      <a class="navbar-brand" href=""> <strong>GLS</strong><span style="color: yellow"> .</span></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
@@ -52,15 +52,15 @@
 	  </nav>
     <!-- END nav -->
     
-    <div class="hero-wrap" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap" style="background-image: url('static/home/images/home-bg2.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text justify-content-start align-items-center">
           <div class="col-lg-6 col-md-12 ftco-animate d-flex align-items-end">
           	<div class="text">
-	            <h1 class="mb-4">Now <span>It's easy for you</span> <span>Send and Receive Items</span></h1>
+	            <h1 class="mb-4"> <strong>Now <span>It's easy for you</span> <span>Send and Receive Items</span></strong> </h1>
 	            <p style="font-size: 18px;"> Your Delivery Ally </p>
-	            <a href="https://vimeo.com/45830194" class="icon-wrap popup-vimeo d-flex align-items-center mt-4">
+	            <a href="https://www.youtube.com/watch?v=_sl5kqUE2II" class="icon-wrap popup-vimeo d-flex align-items-center mt-4">
 	            	<div class="icon d-flex align-items-center justify-content-center">
 	            		<span class="ion-ios-play"></span>
 	            	</div>
@@ -77,11 +77,11 @@
           		<h2>Order Now</h2>
 				<div class="form-group">
 					<label for="" class="label">Pick-up location</label>
-					<input type="text" required class="form-control" id="pickup_address" name="pickup_address" placeholder="ZipCode, City, Country etc">
+					<input type="text" required class="form-control" id="pickup_address" name="pickup_address" placeholder="Street Address ,Postal Code, City, France">
 				</div>
 				<div class="form-group">
 					<label for="" class="label">Drop-off location</label>
-					<input type="text" required class="form-control" id="delivery_address" name="delivery_address" placeholder="ZipCode, City, Country etc">
+					<input type="text" required class="form-control" id="delivery_address" name="delivery_address" placeholder="Street Address, Postal Code, City, France">
 				</div>
 				<div class="d-flex">
 				<div class="form-group mr-2">
@@ -169,7 +169,6 @@
       </div>
     </section>
 
-
     <section class="ftco-section services-section img" style="background-image: url(images/bg_2.jpg);">
     	<div class="overlay"></div>
     	<div class="container">
@@ -220,7 +219,27 @@
     	</div>
     </section>
 
-    <section class="ftco-section testimony-section pb-1">
+    <section class="ftco-section services-section">
+      <div class="container">
+      	<div class="row justify-content-center">
+          <div class="col-md-12 heading-section text-center ftco-animate mb-2">
+            <h2 class="mb-2">Track Your Order</h2><br>
+            <form action="{% url 'track_order' %}" method="post">
+              {% csrf_token %}
+              <div class="form-group">
+                <input type="text" required class="form-control" id="order_id" name="order_id" placeholder="Enter Your order ID here">
+              </div>
+              <div class="form-group" style="margin-top: 20px;">
+                <input type="submit" value="Track Order" class="btn btn-primary py-3 px-4">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="ftco-section testimony-section pb-1 pt-1">
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-7 text-center heading-section ftco-animate">
@@ -273,7 +292,7 @@
 		<section class="ftco-section ftco-no-pt ftco-no-pb pb-4 pt-3">
 			<div class="container">
 				<div class="row no-gutters">
-					<div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url('static/home/images/moovit-about.jpeg');">
+					<div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url('static/home/images/gls-about.jpg');">
 					</div>
 					<div class="col-md-6 wrap-about py-md-5 ftco-animate">
 	          <div class="heading-section mb-5 pl-md-5">
@@ -281,7 +300,7 @@
 	            <h2 class="mb-4">Your Delivery Ally</h2>
 
 	            <p>we build our Reputation upon your satisfaction.</p>
-	            <p>MoovIT, is a delivery and logistics company, know for being strong delivery ally for SMEs, big companies, and Individuals. with the proven track of records, you can entrust us with parcel, Documents, Heavy Materials, and Medical Equipments Delivery.<p>
+	            <p>GLS is a delivery and logistics company, know for being strong delivery ally for SMEs, big companies, and Individuals. with the proven track of records, you can entrust us with parcel, Documents, Heavy Materials, and Medical Equipments Delivery.<p>
 	            <p><a href="/" class="btn btn-primary">Order Us Now</a></p>
 	          </div>
 					</div>
@@ -294,9 +313,9 @@
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">About MoovIT</h2>
-              <p>Your guaranteed ally for transportation</p>
-              <img src="{% static 'home/images/moov-it-logo.jpg' %}" style="width: 100px;" alt="logo">
+              <h2 class="ftco-heading-2">About GLS France</h2>
+              <p>For all your parcel shipments, GLS France is your trusted partner!</p>
+              <img src="{% static 'home/images/gls-logo.jpg' %}" style="width: 100px;" alt="logo">
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -333,9 +352,9 @@
             	<h2 class="ftco-heading-2">Have a Questions?</h2>
             	<div class="block-23 mb-3">
 	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">203 mekanisa St. Mountain View, San Francisco, California, USA</span></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+1 392 3929 210</span></a></li>
-	                <li><a href="{% url 'contactus' %}"><span class="icon icon-envelope"></span><span class="text">info@moovit.com</span></a></li>
+	                <li><span class="icon icon-map-marker"></span><span class="text">65 Avenue Georges Politzer, 7819</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+33 (1) 30 16 22 61 (78261)</span></a></li>
+	                <li><a href="{% url 'contactus' %}"><span class="icon icon-envelope"></span><span class="text">mohssin.lharoti@gls-france.com</span></a></li>
 	              </ul>
 	            </div>
             </div>

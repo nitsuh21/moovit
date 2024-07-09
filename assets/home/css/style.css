@@ -8041,7 +8041,7 @@ h1, h2, h3, h4, h5,
   .ftco-navbar-light .navbar-brand {
     color: #fff; }
     .ftco-navbar-light .navbar-brand span {
-      color: #f7b71d; }
+      color: #FFFF00; }
     @media (max-width: 991.98px) {
       .ftco-navbar-light .navbar-brand {
         color: #fff; } }
@@ -8058,7 +8058,7 @@ h1, h2, h3, h4, h5,
     font-weight: 400;
     opacity: 1 !important; }
     .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
-      color: #f7b71d; }
+      color: #FFFF00; }
     @media (max-width: 991.98px) {
       .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
         padding-left: 0;
@@ -8110,10 +8110,10 @@ h1, h2, h3, h4, h5,
       background: #fc983c;
       border: 1px solid #fc983c; }
   .ftco-navbar-light .navbar-nav > .nav-item.cta.cta-colored a {
-    border: 1px solid #f7b71d;
-    background: #f7b71d !important; }
+    border: 1px solid #FFFF00;
+    background: #FFFF00 !important; }
   .ftco-navbar-light .navbar-nav > .nav-item.active > a {
-    color: #f7b71d; }
+    color: #FFFF00; }
   @media (max-width: 991.98px) {
     .ftco-navbar-light .navbar-nav > .nav-item.active > a {
       color: #fc983c; } }
@@ -8730,7 +8730,7 @@ h1, h2, h3, h4, h5,
           width: 49%;
           display: inline-block; }
         .pills .review .desc .star i {
-          color: #f7b71d; }
+          color: #FFFF00; }
         .pills .review .desc .star .reply {
           padding: 2px 10px;
           background: #f0f0f0;
@@ -8810,7 +8810,7 @@ h1, h2, h3, h4, h5,
     .table tbody tr td.product-name h3 {
       font-size: 18px; }
     .table tbody tr td.product-name .rated span {
-      color: #f7b71d; }
+      color: #FFFF00; }
       .table tbody tr td.product-name .rated span:nth-child(1) {
         color: #000000; }
       .table tbody tr td.product-name .rated span:last-child {
@@ -9288,7 +9288,7 @@ textarea.form-control {
       border-radius: 50%;
       background: rgba(0, 0, 0, 0.1); }
       .testimony-section .owl-dots .owl-dot.active {
-        background: #f7b71d; }
+        background: #FFFF00; }
 
 .testimony-wrap {
   display: block;

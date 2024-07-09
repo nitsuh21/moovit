@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>MoovIT - Parcel Delivery Company</title>
+    <title>GLS France - Parcel Delivery Company</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -31,19 +31,17 @@
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Moov<span style="color: tomato;">IT</span></a>
+	      <a class="navbar-brand" href="/">GLS<span style="color: yellow;">.</span></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-	          <li class="nav-item"><a href="car.html" class="nav-link">Our Car</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	          <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="{% url 'aboutus' %}" class="nav-link">About</a></li>
+	          <li class="nav-item"><a href="{% url 'pricing' %}" class="nav-link">Pricing</a></li>
+	          <li class="nav-item"><a href="{% url 'contactus' %}" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -58,12 +56,12 @@
             <div style="flex: 1; text-align: center;">
               <img src="https://i.pinimg.com/originals/ea/5a/22/ea5a22419c4e616765cb28439496ac88.png" alt="Delivery Time" style="max-width: 40px; height: auto;">
               <p style="margin-top: 10px; font-size: 16px;">Estimated Delivery Time</p>
-              <p style="font-size: 18px; font-weight: bold;" id="estimated-time">-</p>
+              <p style="font-size: 18px; font-weight: bold;" id="estimated-time">{{estimated_delivery_datetime}}</p>
             </div>
             <div style="flex: 1; text-align: center;">
               <img src="https://cdn.vectorstock.com/i/1000v/24/34/money-icon-vector-21582434.jpg" alt="Price" style="max-width: 40px; height: auto;">
               <p style="margin-top: 10px; font-size: 16px;">Estimated Price</p>
-              <p style="font-size: 18px; font-weight: bold;" id="estimated-price">-</p>
+              <p style="font-size: 18px; font-weight: bold;" id="estimated-price">{{price}}</p>
             </div>
           </div>
         </div>
@@ -72,11 +70,10 @@
           <div>
             <div class="row">
               <div class="col-md-6">
-                <div class="form-group">
-                  <h1>{{order}}</h1>
-                  <label for="" class="label">Sender Name <span style="color: red;">*</span></label>
+                <div class="form-group mr-2">
+                  <label for="sender_name" class="label">Sender Name <span style="color: red;">*</span></label>
                   <input type="text" required class="form-control" id="sender_name" name="sender_name" placeholder="Sender Name">
-                </div>
+                  </div>
                 <div class="d-flex">
                   <div class="form-group mr-2">
                   <label for="" class="label">Sender Email <span style="color: red;">*</span></label>
@@ -101,6 +98,16 @@
                 <input type="phone" required class="form-control" id="receiver_phone" name="receiver_phone" placeholder="Receiver Phone">
                 </div>
                 </div>
+                <div class="d-flex">
+                  <div class="form-group mr-2">
+                  <label for="estimated_delivery_datetime" class="label">Estimated Delivery Time</label>
+                  <input type="text" hidden class="form-control" id="estimated_delivery_datetime" name="estimated_delivery_datetime" placeholder="Estimated Delivery Time" value="{{estimated_delivery_datetime}}">
+                  </div>
+                  <div class="form-group ml-2">
+                  <label for="price" class="label">Estimate Price <span style="color: red;">*</span></label>
+                  <input type="text" hidden class="form-control" id="price" name="price" placeholder="Estimated Price" value="{{price}}">
+                  </div>
+                  </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">

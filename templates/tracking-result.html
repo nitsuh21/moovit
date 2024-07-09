@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>GLS France - Parcel Delivery Company</title>
+    <title>MoovIT - Parcel Delivery Company</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -35,7 +35,7 @@
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="/">GLS<span style="color:yellow">.</span></a>
+	      <a class="navbar-brand" href="/">Moov<span>IT</span></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
@@ -44,7 +44,8 @@
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
 	          <li class="nav-item"><a href="{% url 'aboutus' %}" class="nav-link">About</a></li>
-	          <li class="nav-item active"><a href="{% url 'pricing' %}" class="nav-link">Pricing</a></li>
+	          <li class="nav-item"><a href="{% url 'pricing' %}" class="nav-link">Pricing</a></li>
+              <li class="nav-item active"><a href="{% url 'track_order' %}" class="nav-link">Tracking</a></li>
 	          <li class="nav-item"><a href="{% url 'contactus' %}" class="nav-link">Contact</a></li>
 	        </ul>
 	      </div>
@@ -52,27 +53,34 @@
 	  </nav>
 
 
-    <section class="ftco-section services-section img" style="background-image: url('static/home/images/gls_france-about.jpeg');">
+    <section class="ftco-section services-section img" style="background-image: url('static/home/images/moovit-about.jpeg');">
     	<div class="overlay"></div>
     </section>
 
-		<section class="ftco-section ftco-no-pt ftco-no-pb pb-4 pt-3">
-			<div class="container">
-				<div class="row no-gutters">
-					<div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url('static/home/images/payment-gls.jpg');">
-					</div>
-					<div class="col-md-6 wrap-about py-md-5 ftco-animate">
-	          <div class="heading-section mb-5 pl-md-5">
-	          	<span class="subheading">Pricing</span>
-	            <h6 class="mb-4">It's Affordable</h6>
+    {% for message in messages %}
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Order with this Order Id hasn't found</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">X</button>
+              </div>
+              {% endfor %}
 
-	            <p>Price is Automatically Calculated!</p>
-	            <p>GLS calculates the price based on the Item Descriptions, Pickup Address, and Delivery Address. <p>
-	            <p><a href="/" class="btn btn-primary">Estimate Now</a></p>
-	          </div>
-					</div>
-				</div>
-			</div>
+		<section class="ftco-section ftco-no-pt ftco-no-pb pb-4 pt-3">
+            <h1 class="p-2 text-center">Your Order</h1><br>
+			<div class="card" style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                
+                <div style="flex: 1; text-align: center;">
+                    <img src="https://cdn.vectorstock.com/i/1000v/24/34/money-icon-vector-21582434.jpg" alt="Price" style="max-width: 40px; height: auto;">
+                    <p style="margin-top: 10px; font-size: 16px;">Payment Status</p>
+                    <p style="font-size: 18px; font-weight: bold;" id="estimated-price">{{order.payment_status}}</p>
+                  </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div style="flex: 1; text-align: center;">
+                    <img src="https://i.pinimg.com/originals/ea/5a/22/ea5a22419c4e616765cb28439496ac88.png" alt="Delivery Time" style="max-width: 40px; height: auto;">
+                    <p style="margin-top: 10px; font-size: 16px;">Delivery Status</p>
+                    <p style="font-size: 18px; font-weight: bold;" id="estimated-time">{{order.delivey_status}}</p>
+                  </div>
+                </div>
+              </div>
 		</section>
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">
@@ -133,7 +141,6 @@
         </div>
       </div>
     </footer>
-    
   
 
   <!-- loader -->

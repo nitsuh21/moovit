@@ -129,11 +129,11 @@
                         <td class="align-middle text-center">
                           <span class="text-secondary text-xs font-weight-bold">{{order.price}}</span>
                         </td>
-                        {% if order.order_status == 'delivered' %}
+                        {% if order.order_status == 'Delivered' %}
                         <td class="align-middle text-center text-sm">
                           <span class="badge badge-sm bg-gradient-success">{{order.order_status}}</span>
                         </td>
-                        {% elif order.order_status == 'cancelled' %}
+                        {% elif order.order_status == 'Cancelled' %}
                         <td class="align-middle text-center text-sm">
                           <span class="badge badge-sm bg-gradient-danger">{{order.order_status}}</span>
                         </td>

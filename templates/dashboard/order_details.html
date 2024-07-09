@@ -6,9 +6,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="{% static 'dashboard/img/apple-icon.png' %}">
-  <link rel="icon" type="image/png" href="{% static 'dashboard/img/favicon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'dashboard/img/gls-logo.jpg' %}">
   <title>
-    MoovIT - Dashboard
+    GLS - Dashboard
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -112,7 +112,7 @@
                             <label for="driver_assigned" class="label">Driver Assigned</label>
                             <select class="form-control" id="driver_assigned" name="driver_assigned">
                               {% for driver in drivers %}
-                                <option value="{{ driver.id }}" {% if order.driver_assigned == driver %}selected{% endif %}>{{ driver.name }}</option>
+                                <option value="{{ driver }}">{{ driver }}</option>
                               {% endfor %}
                             </select>
                           </div>
@@ -164,16 +164,8 @@
                             <input type="text" class="form-control" id="delivery_address" name="delivery_address" value="{{ order.delivery_address }}">
                           </div>
                           <div class="form-group">
-                            <label for="pickup_date" class="label">Pickup Date</label>
-                            <input type="date" class="form-control" id="pickup_date" name="pickup_date" value="{{ order.pickup_date }}">
-                          </div>
-                          <div class="form-group">
                             <label for="delivery_date" class="label">Delivery Date</label>
-                            <input type="date" class="form-control" id="delivery_date" name="delivery_date" value="{{ order.delivery_date }}">
-                          </div>
-                          <div class="form-group">
-                            <label for="pickup_time" class="label">Pickup Time</label>
-                            <input type="time" class="form-control" id="pickup_time" name="pickup_time" value="{{ order.pickup_time }}">
+                            <input type="text" class="form-control" disabled id="delivery_date" name="delivery_date" value="{{ order.delivery_date }}">
                           </div>
                         </div>
                         <div class="col-md-6">
@@ -358,7 +350,7 @@
       options: {
         title: {
           display: true,
-          text: "MoovIT Delivery Status"
+          text: "GLS Delivery Status"
         }
       }
     });

@@ -5,21 +5,39 @@ import string
 import datetime
 from django.contrib import messages
 from django.core.mail import send_mail
-from geopy.geocoders import Nominatim
+from geopy.geocoders import GoogleV3
+from geopy.distance import geodesic
+from datetime import datetime, timedelta
 
-loc = Nominatim(user_agent="GetLoc")
+google_api_key = 'AIzaSyBi4BjJLG_eFOenyKILydQDQ2YxrSTgXHo'
 
-def get_pickup_address():
-    return "Pickup Address"
+def get_coordinates_google(address, api_key):
+    geolocator = GoogleV3(api_key=api_key)
+    try:
+        location = geolocator.geocode(address)
+        if location:
+            return (location.latitude, location.longitude)
+        else:
+            return None
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
 
-def get_delivery_address():
-    return "Delivery Address"
 
-def get_pickup_date():
-    return '2020-05-12'
+def calculate_distance(pickup, delivery):
+    return geodesic(pickup, delivery).kilometers
 
-def get_delivery_date():
-    return '2020-05-12'
+def estimate_delivery_time(distance):
+    average_speed_kmh = 60
+    hours = distance / average_speed_kmh
+    return timedelta(hours=hours)
+
+def calculate_price(distance):
+    base_price = 5.0  # Base price in euros
+    price_per_km = 0.50  # Price per kilometer in euros
+    return base_price + (distance * price_per_km)
+
+
 
 # Create your views here.
 def create_order(request):
@@ -55,10 +73,18 @@ def checkout_order(request, orderid):
         receiver_email = request.POST['receiver_email']
         receiver_phone = request.POST['receiver_phone']
 
-        pickup_address = get_pickup_address()
-        delivery_address = get_delivery_date()
-        pickup_date = get_pickup_date()
-        delivery_date = get_delivery_date()
+        # pickup_address = request.get.POST("pickup_address")
+        # delivery_address = request.get.POST("delivery_address")
+        # pickup_date = request.get.POST("pickup_date")
+        estimated_delivery_datetime = request.POST.get('estimated_delivery_datetime')
+        if estimated_delivery_datetime:
+            estimated_delivery_datetime = estimated_delivery_datetime.replace('a.m.', 'AM').replace('p.m.', 'PM')
+            estimated_delivery_datetime = datetime.strptime(estimated_delivery_datetime, '%B %d, %Y, %I:%M %p').date()
+        else:
+            estimated_delivery_datetime = None
+        price = float(request.POST["price"])
+
+        print("sender_name", sender_name, "sender_email", sender_email, "sender_phone", sender_phone, "receiver_name", receiver_name, "receiver_email", receiver_email, "receiver_phone", receiver_phone, "estimated_delivery_datetime", estimated_delivery_datetime, "price", price)
 
         payment_status = "Paid"
 
@@ -69,11 +95,9 @@ def checkout_order(request, orderid):
         order.receiver_name = receiver_name
         order.receiver_email = receiver_email
         order.receiver_phone = receiver_phone
-        order.pickup_address = pickup_address
-        order.delivery_address = delivery_address 
-        order.pickup_date = pickup_date
-        order.delivery_date = delivery_date 
         order.payment_status = payment_status
+        order.delivery_date = estimated_delivery_datetime
+        order.price = price
 
         order.save()
 
@@ -92,15 +116,49 @@ def checkout_order(request, orderid):
     else:
         try:
             order = Order.objects.get(orderID=orderid)
-            pickup_loc = loc.geocode(order.pickup_address)
-            delivery_loc = loc.geocode(order.delivery_address)
+            pickup_loc = order.pickup_address
+            delivery_loc = order.delivery_address
 
-            print(pickup_loc, delivery_loc)
+            pickup_coordinates = get_coordinates_google(pickup_loc, google_api_key)
+            delivery_coordinates = get_coordinates_google(delivery_loc, google_api_key)
+
+            print('locations',pickup_coordinates, delivery_coordinates)
+
+            distance = calculate_distance(pickup_coordinates, delivery_coordinates)
+
+            estimated_time = estimate_delivery_time(distance)
+            estimated_delivery_datetime = datetime.now() + estimated_time
+
+            price = calculate_price(distance)
+
+            price = round(price, 2)
+
+
         except Order.DoesNotExist:
             return redirect('home')
         
         context = {
-            "order": order
+            "order": order,
+            "estimated_delivery_datetime": estimated_delivery_datetime,
+            "price": price
         }
         return render(request, 'checkout.html', context)
     
+def track_order(request):
+    if request.method == 'POST':
+        orderID = request.POST['order_id']
+        try:
+            order = Order.objects.get(orderID=orderID)
+            if order is not None:
+                context = {
+                'order': order
+                }
+                return render(request, 'tracking-result.html', context)
+            else:
+                messages.error(request, 'Order not found')
+                return redirect('track_order')
+        except Order.DoesNotExist:
+            messages.error(request, 'Order not found')
+            return redirect('track_order')
+    else:
+        return render(request, 'tracking-result.html')
