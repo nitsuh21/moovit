@@ -157,11 +157,56 @@ def drivers(request):
 def profile_details(request, id):
     if request.method == 'POST':
         print(request.POST)
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        user = User.objects.get(email=id)
+        user.email = email
+        user.phone = phone
+        user.address = address
+        user.first_name = first_name
+        user.last_name = last_name
+        user.save()
+        return redirect('profile_details', email=email)
+
     else:
-        return render(request, 'dashboard/profile_details.html')
+        first_name, last_name = id.split('-')
+        try:
+            user = User.objects.get(first_name__iexact=first_name, last_name__iexact=last_name)
+        except:
+            pass
+        print({user})
+        try:
+            check_driver = Driver.objects.filter(user=user)
+            if check_driver:
+                driver = Driver.objects.get(user=user)
+            else:
+                driver = None
+        except:
+            pass
+
+        context = {
+            'user': user,
+            'driver': driver
+        }
+        return render(request, 'dashboard/profile_details.html', context)
     
 def myprofile(request):
     if request.method == 'POST':
-        print(request.POST)
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        user = User.objects.get(email=request.user.email)
+        user.email = email
+        user.phone = phone
+        user.address = address
+        user.first_name = first_name
+        user.last_name = last_name
+        user.save()
+        return redirect('myprofile')
     else:
         return render(request, 'dashboard/myprofile.html')

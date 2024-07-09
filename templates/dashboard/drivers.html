@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="{% static 'dashboard/img/apple-icon.png' %}">
-  <link rel="icon" type="image/png" href="{% static 'dashboard/img/favicon.png' %}">
+  <link rel="icon" type="image/png" href="{% static 'dashboard/img/gls-logo.png' %}">
   <title>
     MoovIT - Dashboard
   </title>
@@ -103,6 +103,7 @@
                       <tr>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Full Name</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Vehicle Number</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Vehicle</th>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Points</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Phone Number</th>
                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Level</th>
@@ -115,12 +116,15 @@
                             <td>
                               <div class="d-flex px-2 py-1">
                                 <div class="d-flex flex-column justify-content-center">
-                                  <h6 class="mb-0 text-sm">{{driver.user.first_name}} {{driver.user.last_name}}</h6>
+                                  <h6 class="mb-0 text-sm"> <a href="{% url 'profile_details' driver.user.first_name %}">{{driver.user.first_name}} {{driver.user.last_name}}</a></h6>
                                 </div>
                               </div>
                             </td>
                             <td>
                               <p class="text-xs font-weight-bold mb-0">{{driver.vehicle_number}}</p>
+                            </td>
+                            <td>
+                              <p class="text-xs font-weight-bold mb-0">{{driver.vehicle}}</p>
                             </td>
                             <td>
                               <p class="text-xs font-weight-bold mb-0">{{driver.points}}</p>
